@@ -120,7 +120,7 @@ nav ul li a.active {
 /* ============ FILMS PAGE ============ */
 .films-page {
   background: var(--white);
-  padding: 50px 20px 80px;
+  padding: calc(var(--nav-height) + 50px) 20px 80px;
 }
 
 .films-grid {
@@ -182,7 +182,7 @@ nav ul li a.active {
 /* ============ OTHER CREATIONS PAGE ============ */
 .other-page {
   background: var(--white);
-  padding: 50px 20px 80px;
+  padding: calc(var(--nav-height) + 50px) 20px 80px;
 }
 
 .other-intro {
