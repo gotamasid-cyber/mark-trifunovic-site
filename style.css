@@ -2,7 +2,7 @@
    Mark Trifunovic — Static Site Styles
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   color: var(--dark);
   background: var(--white);
   min-height: 100vh;
@@ -277,7 +277,7 @@ nav ul li a.active {
 }
 
 .about-body p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.9;
   color: rgba(255, 255, 255, 0.88);
@@ -344,7 +344,7 @@ nav ul li a.active {
 
 .contact-form input,
 .contact-form textarea {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   padding: 14px 16px;
   border: 1px solid #ddd;
@@ -389,7 +389,7 @@ footer {
   font-size: 13px;
   color: #aaa;
   border-top: 1px solid #eee;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* ============ RESPONSIVE ============ */
