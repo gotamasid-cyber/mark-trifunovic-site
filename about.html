@@ -6,10 +6,268 @@
   <title>About — Mark Trifunovic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #f0ebe1;
+      --text:   #1c1510;
+      --soft:   rgba(28,21,16,0.55);
+      --gold:   #b8924a;
+      --dark:   #0e0e0e;
+      --nav-h:  64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV — dark, stays dark ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: rgba(14,14,14,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul li a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 16px;
+      color: rgba(242,239,233,0.5);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active { color: #f2efe9; }
+
+    /* ── SPLIT LAYOUT ── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* Left: photo, same bg as page so PNG blends naturally */
+    .about-image {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+    }
+    /* Soft right-edge fade into text column */
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--bg) 100%);
+    }
+
+    /* ── TEXT COLUMN ── */
+    .about-text {
+      padding: calc(var(--nav-h) + 72px) 64px 100px 48px;
+    }
+
+    .about-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 40px;
+    }
+
+    /* Opening quote */
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--gold);
+      line-height: 1.65;
+      padding-left: 20px;
+      border-left: 2px solid var(--gold);
+      margin-bottom: 56px;
+    }
+
+    /* Section block */
+    .about-section { margin-bottom: 44px; }
+
+    .section-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .about-section p {
+      font-size: 15px;
+      line-height: 1.95;
+      color: var(--soft);
+    }
+    .about-section p + p { margin-top: 16px; }
+    .about-section p em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 44px 0;
+      padding: 0 0 0 20px;
+      border-left: 1px solid rgba(184,146,74,0.4);
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.55;
+      color: rgba(28,21,16,0.4);
+    }
+
+    /* Divider */
+    .about-rule {
+      border: none;
+      border-top: 1px solid rgba(28,21,16,0.1);
+      margin: 44px 0;
+    }
+
+    /* Closing BttF */
+    .about-closing {
+      padding-top: 44px;
+      border-top: 1px solid rgba(184,146,74,0.25);
+    }
+    .about-closing blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--gold);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .about-closing cite {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(28,21,16,0.3);
+      margin-bottom: 20px;
+    }
+    .about-closing p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--soft);
+    }
+
+    .about-cta {
+      display: inline-block;
+      margin-top: 44px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .about-cta:hover { color: var(--gold); }
+
+    /* ── FOOTER — dark anchors the bottom ── */
+    footer {
+      background: var(--dark);
+      padding: 40px 60px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(242,239,233,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #f2efe9; }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(242,239,232,0.18);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .about-layout { grid-template-columns: 1fr; }
+      .about-image  { position: relative; height: 65vw; min-height: 280px; }
+      .about-text   { padding: 48px 32px 80px; }
+      footer        { padding: 32px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+      .nav-inner    { padding: 0 24px; }
+      nav ul        { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      nav ul li a { font-size: 14px; }
+      nav ul      { gap: 14px; }
+    }
+
+  </style>
 </head>
 <body>
-  <nav id="nav" class="scrolled">
+
+  <nav>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">MT</a>
       <ul>
@@ -23,28 +281,57 @@
   </nav>
 
   <div class="about-layout">
+
     <div class="about-image">
-      <img src="https://static.wixstatic.com/media/a692bc_de0eff7428ed4a94918ca5df03e65331~mv2_d_6000_3376_s_4_2.jpg/v1/fill/w_1440,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a692bc_de0eff7428ed4a94918ca5df03e65331~mv2_d_6000_3376_s_4_2.jpg" alt="Mark Trifunovic">
+      <img
+        src="https://static.wixstatic.com/media/a692bc_d7d2c5be75e64e40bbb48ec66559fcc5~mv2.png/v1/fill/w_1200,h_1600,al_c,q_90,enc_avif,quality_auto/34445061_1826658497392262_72375774234646.png"
+        alt="Mark Trifunovic"
+      >
     </div>
 
     <div class="about-text">
+
       <h1>About</h1>
 
       <blockquote class="about-quote">
         "Life moves pretty fast. If you don't stop and look around once in a while, you could miss it."
       </blockquote>
 
-      <div class="about-body">
+      <div class="about-section">
+        <span class="section-label">Leeds · Toronto</span>
         <p>I'm a filmmaker originally from Leeds in northern England. Everybody there sounds like they're from Winterfell. I now live and work in Toronto, Canada. I flew here in 2014 on a one way ticket. It was one of the best decisions I ever made.</p>
+      </div>
 
+      <div class="pull-quote">
+        <p>"I sometimes work small, DSLR in one hand and laptop in the other — and sometimes I work big. Whatever the project demands."</p>
+      </div>
+
+      <div class="about-section">
+        <span class="section-label">The Work</span>
         <p>I lead something of a double life in film. When I'm not dressing sets or doing props for TV shows and commercials I'm writing and directing films of my own. I'm not prejudiced about format: if I like an idea, I'll take an opportunity.</p>
+        <p>I have years of experience in production. I am comfortable communicating with personnel from right across the production spectrum, from crew members to client executives. I enjoy bringing a positive attitude to those interactions, and to the work place in general. It's business, but it's also pleasure.</p>
+      </div>
 
-        <p>Over the last few years I've been working with the Deaf community in Toronto, collaborating with artists and filmmakers in American Sign Language. In 2016, I wrote and directed <em>Deafening Darkness</em>, Toronto's first all Deaf cast horror movie. In 2020, I made <em>Old Mother Tongue</em>, a short film about the 1880 Milan Congress on the Education of the Deaf.</p>
+      <hr class="about-rule">
 
-        <p>I'm keen to expand my network of collaborators — writers, producers, musicians, and creative agencies. Let's put our minds to this and see what we can create together.</p>
+      <div class="about-section">
+        <span class="section-label">Community</span>
+        <p>Over the last few years I've been working with the Deaf community in Toronto, collaborating with artists and filmmakers in American Sign Language. In 2016, I wrote and directed <em>Deafening Darkness</em>, Toronto's first all Deaf cast horror movie. And in 2020, I made <em>Old Mother Tongue</em>, a short film that looks at one of the most significant moments in modern Deaf history: the 1880 Milan Congress on the Education of the Deaf, when sign language was banned from use in education. More collaborations with the Deaf community are on the horizon.</p>
+      </div>
+
+      <div class="about-section">
+        <span class="section-label">Looking For</span>
+        <p>I'm keen to expand my network of potential collaborators. I want to work with writers with interesting ideas, producers who have the drive to get stuff moving, musicians with a view to making music videos, and creative agencies so that we can start building a portfolio of clients together.</p>
+      </div>
+
+      <div class="about-closing">
+        <blockquote>"If you put your mind to it, you can accomplish anything."</blockquote>
+        <cite>Back to the Future — still holds up</cite>
+        <p>Let's put our minds to this and see what magic we can create together.</p>
       </div>
 
       <a href="contact.html" class="about-cta">Get in touch →</a>
+
     </div>
   </div>
 
@@ -66,5 +353,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
   </script>
+
 </body>
 </html>

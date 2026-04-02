@@ -6,10 +6,208 @@
   <title>Other Creations — Mark Trifunovic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,200;0,300;0,400;1,300&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #f0ebe1;
+      --text:   #1c1510;
+      --soft:   rgba(28,21,16,0.55);
+      --gold:   #b8924a;
+      --dark:   #0e0e0e;
+      --nav-h:  64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: rgba(14,14,14,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul li a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 16px;
+      color: rgba(242,239,233,0.5);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active { color: #f2efe9; }
+
+    /* ── INTRO ── */
+    .other-intro {
+      padding: calc(var(--nav-h) + 80px) 60px 60px;
+      max-width: 760px;
+    }
+
+    .intro-eyebrow {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .other-intro h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 7vw, 80px);
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .other-intro p {
+      font-size: 16px;
+      line-height: 1.95;
+      color: var(--soft);
+      font-weight: 300;
+    }
+
+    /* ── GRID ── */
+    .other-grid {
+      padding: 20px 60px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .other-card {
+      display: block;
+      text-decoration: none;
+      overflow: hidden;
+    }
+
+    .other-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(10%);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+
+    .other-card:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%);
+    }
+
+    .other-card-info {
+      padding: 14px 4px 20px;
+    }
+
+    .other-card-name {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .other-card-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--soft);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 40px 60px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+    .footer-links { display: flex; gap: 32px; }
+    .footer-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(242,239,233,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #f2efe9; }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(242,239,232,0.18);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-inner    { padding: 0 24px; }
+      nav ul        { gap: 20px; }
+      .other-intro  { padding: calc(var(--nav-h) + 48px) 32px 40px; }
+      .other-grid   { grid-template-columns: repeat(2, 1fr); padding: 0 32px 80px; }
+      footer        { padding: 32px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      nav ul li a   { font-size: 14px; }
+      nav ul        { gap: 14px; }
+      .other-grid   { grid-template-columns: 1fr; }
+    }
+
+  </style>
 </head>
 <body>
-  <nav id="nav" class="scrolled">
+
+  <nav id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">MT</a>
       <ul>
@@ -22,21 +220,33 @@
     </div>
   </nav>
 
-  <div class="other-intro-section">
-    <span class="page-eyebrow">Beyond Film</span>
+  <div class="other-intro">
+    <span class="intro-eyebrow">Beyond Film</span>
     <h1>I Like to Make Things</h1>
-    <p>Aside from making movies, I like to make other things too. I like working with my hands, learning new skills, and using tools. I appreciate attention to detail, aesthetics, function and design — and I like using discarded materials, repurposing them for something new.</p>
+    <p>Aside from making movies, I like to make other things, too. I like working with my hands, learning new skills, and using tools. I appreciate attention to detail, aesthetics, function and design. I like using discarded materials destined for disposal, and repurposing them for something new. This is a place for showcasing some of the things I have made that aren't films. (It hasn't stopped me from making films about them being made, though. Go figure.)</p>
   </div>
 
   <div class="other-grid">
     <a href="https://www.marktrifunovic.com/exposed-brick-wall" class="other-card" target="_blank" rel="noopener">
       <img src="https://static.wixstatic.com/media/a692bc_3de91c396dbe4eb4b1e421e17ddbf4f0~mv2.png/v1/fill/w_600,h_389,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0640_HEIC.png" alt="Exposed Brick Wall" loading="lazy">
+      <div class="other-card-info">
+        <span class="other-card-name">Exposed Brick Wall</span>
+        <span class="other-card-desc">Renovation / Masonry</span>
+      </div>
     </a>
     <a href="https://www.marktrifunovic.com/sculpture-lamp" class="other-card" target="_blank" rel="noopener">
       <img src="https://static.wixstatic.com/media/a692bc_53dcec3e3902474abd31d11885d4f261~mv2.png/v1/fill/w_600,h_389,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0449%202_HEIC.png" alt="Sculpture Lamp" loading="lazy">
+      <div class="other-card-info">
+        <span class="other-card-name">Sculpture Lamp</span>
+        <span class="other-card-desc">Fabrication / Lighting Design</span>
+      </div>
     </a>
     <a href="https://www.marktrifunovic.com/trif-and-the-funovics" class="other-card" target="_blank" rel="noopener">
-      <img src="https://static.wixstatic.com/media/a692bc_7c61d727830e41b69ef43b679f7b9f10~mv2.jpeg/v1/fill/w_600,h_389,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_3337%20Large.jpeg" alt="Trif and the Funovics" loading="lazy">
+      <img src="https://static.wixstatic.com/media/a692bc_7c61d727830e41b69ef43b679f7b9f10~mv2.jpeg/v1/fill/w_600,h_389,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_3337%20Large.jpeg" alt="Trif and the Fun-O-Vics" loading="lazy">
+      <div class="other-card-info">
+        <span class="other-card-name">Trif and the Fun-O-Vics</span>
+        <span class="other-card-desc">Family / Music</span>
+      </div>
     </a>
   </div>
 
@@ -58,5 +268,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
   </script>
+
 </body>
 </html>
